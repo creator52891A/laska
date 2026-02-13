@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>TRACKING SYSTEM</title>
+  <style>
+    body { background: #fdf2f4; font-family: sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+    .app { background: white; max-width: 450px; width: 100%; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 20px; }
+    .header { background: #ff4d6d; color: white; padding: 20px; text-align: center; }
+    .status-card { padding: 20px; border-bottom: 5px solid #fdf2f4; }
+    .badge { background: #ffe5ec; color: #ff4d6d; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8em; }
+    .timeline { padding: 20px; }
+    .log { border-left: 2px solid #ffb3c1; padding-left: 20px; position: relative; margin-bottom: 25px; }
+    .log::after { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; background: #ff4d6d; border-radius: 50%; }
+    .date { font-size: 0.75em; color: #aaa; }
+    .msg { font-weight: bold; display: block; margin-top: 5px; }
+    .desc { font-size: 0.9em; color: #666; }
+
+    /* NOVÉ TLAČÍTKO */
+    .track-button {
+      display: block;
+      background: #ff4d6d;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.2s;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+    }
+    .track-button:hover {
+      background: #ff758f;
+      transform: scale(1.02);
+    }
+    .footer-note {
+      font-size: 0.8em;
+      color: #999;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <small>World Global</small>
+    <h2>Sledování zásilky</h2>
+  </div>
+  <div class="status-card">
+    <span class="badge">V PŘEPRAVĚ</span>
+    <p style="margin: 15px 0 5px 0;">Číslo: <strong>GENERUJE SE</strong></p>
+    <div style="height: 6px; background: #eee; border-radius: 3px;"><div style="width: 85%; background: #ff4d6d; height: 100%; border-radius: 3px;"></div></div>
+
+    <a href="https://www.17track.net/cs/track?nums=ABC7890" target="_blank" class="track-button" style="margin-top: 20px;">
+      OTEVŘÍT LIVE TRACKING →
+    </a>
+  </div>
+
+  <div class="timeline">
+
+    <div class="log" style="border-left-color: #eee;">
+
+      <span class="msg">PŘIJATO K PŘEPRAVĚ</span>
+      <span class="desc">Zásilka byla naložena láskou a je na cestě k Tobě.<br>hallo papagena tu la bella con la papaya</span>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+</div>
+<p class="footer-note">Pro detailní polohu kurýra klikněte na tlačítko výše.</p>
+</body>
+</html>

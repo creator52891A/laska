@@ -1,0 +1,59 @@
+:root { --primary: #ff4d6d; --secondary: #ffb3c1; --bg: #fff0f3; --text: #590d22; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.quiz-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+}
+
+.progress-container { background: var(--secondary); border-radius: 10px; height: 10px; margin: 20px 0; overflow: hidden; }
+#bar { background: var(--primary); height: 100%; width: 0%; transition: 0.4s; }
+
+.options { display: grid; gap: 12px; margin-top: 25px; }
+.btn {
+  border: 2px solid var(--secondary);
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.btn:hover { background: var(--bg); border-color: var(--primary); transform: translateY(-2px); }
+.hidden { display: none; }
+
+/* Třída, kterou JS dočasně přidá na body */
+.error-flash {
+  background-color: #ff0000 !important; /* Agresivní červená */
+  transition: background-color 0.1s ease-in-out;
+}
+
+/* Pokud chceš, aby se při chybě zatřásla i ta karta s kvízem, přidej animaci: */
+.error-flash .quiz-card {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
