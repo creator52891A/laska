@@ -132,10 +132,75 @@ function startFinalCountdown() {
 
     if (secondsLeft <= 0) {
       clearInterval(interval);
-      window.location.href = 'tracking.html';
+      // Místo hned na tracking jdeme na bonusy
+      startBonusQuestions();
     }
   }, 1000);
 }
+
+function startBonusQuestions() {
+  const container = document.getElementById('options');
+  const questionEl = document.getElementById('question');
+  const counterEl = document.getElementById('counter');
+
+  // Vyčistíme plochu
+  container.innerHTML = '';
+
+  const bonusQuestions = [
+    {
+      q: "POZOR: Detekována neoprávněná snaha o přístup k poloze! Musíš potvrdit svou identitu: Kdo je tvoje nejoblíbenější holka?",
+      a: ["Ty", "Láska mého života", "Moje princezna", "Všechno výše uvedené"],
+      c: [0, 1, 2, 3]
+    },
+    {
+      q: "Systém vyžaduje fyzické potvrzení: Stihneš mi teď hned poslat pusu na Messenger?",
+      a: ["Jasně!", "Už se to odesílá", "Hned po tomhle", "Miluju tě"],
+      c: [0, 1, 2, 3]
+    },
+    {
+      q: "Poslední věc: Slibuješ, že mě po návratu pořádně pomazlíš?",
+      a: ["Slibuju!", "Na 1000 %", "Můžeš se na to spolehnout", "Už se nemůžu dočkat"],
+      c: [0, 1, 2, 3]
+    }
+  ];
+
+  let currentBonus = 0;
+
+  function renderBonus() {
+    if (currentBonus >= bonusQuestions.length) {
+      // Až po všech bonusech jde tracking
+      counterEl.innerText = 'TEĎ UŽ OPRAVDU! ❤️';
+      questionEl.innerText = 'Identita potvrzena. Přesměrovávám...';
+      container.innerHTML = '🚀';
+      setTimeout(() => {
+        window.location.href = 'tracking.html';
+      }, 1500);
+      return;
+    }
+
+    const bQ = bonusQuestions[currentBonus];
+    counterEl.innerText = `BONUS ${currentBonus + 1} z ${bonusQuestions.length}`;
+    questionEl.innerText = bQ.q;
+    container.innerHTML = '';
+
+    bQ.a.forEach((opt, i) => {
+      const b = document.createElement('button');
+      b.className = 'btn';
+      b.innerText = opt;
+      b.onclick = () => {
+        currentBonus++;
+        renderBonus();
+      };
+      container.appendChild(b);
+    });
+  }
+
+  renderBonus();
+}
+
+
+
+
 
 // Inicializace
 render();
